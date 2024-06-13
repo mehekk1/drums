@@ -1,11 +1,12 @@
 for(var i=0;i<document.querySelectorAll(".drum").length;i++){
     document.querySelectorAll("button")[i].addEventListener("click",function (){
         makesound(this.innerHTML);
-      
+        animation(this.innerHTML);
     });
 }
 document.addEventListener("keypress", (event) => { 
     makesound(event.key);
+    animation(event.key);
 })
 function makesound(key){
     switch(key){
@@ -31,4 +32,11 @@ function makesound(key){
             var audio=new Audio('sounds/kick-bass.mp3').play();
             break;
       }
+}
+function animation(currentkey){
+   var currentbutton= document.querySelector("."+currentkey);
+   currentbutton.classList.add("pressed");
+   setTimeout(function(){currentbutton.classList.remove("pressed");},100);
+   
+
 }
